@@ -109,7 +109,7 @@ if user_input:= st.chat_input("텍스트를 입력하세요."):
         stream_handler = StreamHandler(st.empty())  # container = st.empty() 로 만든 공간 = 들어온 메세지를 찍어내는 공간
 
         # 1. LLM 모델 생성
-        api_key = os.getenv("UPSTAGE_API_KEY")
+        api_key = os.getenv("UPSTAGE_API_KEY") or st.secrets.get("UPSTAGE_API_KEY")
         api_key=api_key
         llm = ChatUpstage(
             streaming=True,
